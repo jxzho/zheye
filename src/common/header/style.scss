@@ -1,0 +1,26 @@
+$imgUrl: "https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png";
+
+.header-user-menu {
+  display: flex;
+  align-items: center;
+  .img-wrapper {
+    width: 24px;
+    height: 24px;
+    position: relative;
+    margin-right: 5px;
+    .ant-avatar {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 24px;
+      height: 24px;
+      background: url($imgUrl) no-repeat center/24px 24px;
+    }
+  }
+}
+
+.ant-dropdown-menu {
+  .anticon {
+    margin-right: 8px;
+  }
+}

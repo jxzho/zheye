@@ -1,0 +1,52 @@
+.login-wrapper {
+  .ant-tabs-nav-scroll {
+    display: flex;
+    justify-content: center;
+  }
+
+  .title-wrapper {
+    height: 44px;
+    line-height: 44px;
+    text-align: center;
+    margin-top: 30px;
+    img {
+      height: 44px;
+      margin-right: 16px;
+      vertical-align: top;
+    }
+    .title-text {
+      color: rgba(0, 0, 0, 0.85);
+      font-weight: 600;
+      font-size: 33px;
+      letter-spacing: .15em;
+      font-family: Avenir, Helvetica Neue, Arial, Helvetica, sans-serif;
+    }
+  }
+
+  .login-form {
+    .login-input-area {
+      border-radius: 4px;
+      overflow: hidden;
+      margin-top: 15px;
+      border: 1px solid #eee;
+      .ant-input {
+        border-radius: initial;
+        border-color: transparent;
+        height: 50px;
+        background-color: hsla(0, 0%, 71%, 0.1);
+        padding: 5px 15px;
+        &:focus {
+          box-shadow: none;
+        }
+      }
+      & > input:nth-child(2) {
+        border-top: 1px solid #eee;
+      }
+    }
+    .ant-btn.ant-btn-primary.ant-btn-round {
+      width: 100%;
+      margin: 20px 0 30px 0;
+      height: 36px;
+    }
+  }
+}

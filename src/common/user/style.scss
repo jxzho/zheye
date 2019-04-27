@@ -1,0 +1,384 @@
+@import "../../scss/mixin.scss";
+
+.user-wrapper {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #f6f6f6;
+  .user-info-wrapper {
+    width: 1200px;
+    margin: 30px auto;
+    display: flex;
+    .left-area {
+      min-height: 850px;
+      max-height: 850px;
+      margin-right: 10px;
+      @include box-style;
+      transition: all 0.3s ease;
+      width: 380px;
+      &.data-center {
+        width: 300px;
+      }
+      .ant-card {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        .ant-card-body {
+          flex: 1;
+          .top {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 24px;
+            .avatar {
+              margin-bottom: 20px;
+            }
+            .name {
+              margin-bottom: 4px;
+              color: rgba(0, 0, 0, 0.85);
+              font-weight: 500;
+              font-size: 20px;
+              line-height: 28px;
+            }
+            .sub {
+              margin-top: 10px;
+            }
+          }
+          .info-item {
+            margin-bottom: 8px;
+            .anticon {
+              margin-right: 10px;
+            }
+          }
+          .title {
+            margin-bottom: 12px;
+            color: rgba(0, 0, 0, 0.85);
+            font-weight: 500;
+          }
+          .school-item {
+            margin-bottom: 24px;
+            color: rgba(0, 0, 0, 0.65);
+            display: flex;
+            align-items: center;
+            .school {
+              margin-left: 6px;
+            }
+          }
+        }
+      }
+    }
+    .right-area {
+      width: 800px;
+      min-height: 850px;
+      max-height: 850px;
+      overflow: auto;
+      @include box-style;
+      transition: all 0.3s ease;
+      &.data-center {
+        width: 900px;
+      }
+      & > .ant-card {
+        height: 100%;
+        & > .ant-card-body {
+          padding: 0;
+          position: absolute;
+          top: 55px;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          .article-wrapper {
+            padding: 24px 24px 0 24px;
+            .list {
+              margin-bottom: 0;
+              & > .item:not(:nth-last-child(1)) {
+                border-bottom: 1px solid #e8e8e8;
+                margin-bottom: 30px;
+              }
+              .item {
+                padding: 16px 0;
+                .title {
+                  line-height: 16px;
+                  margin-bottom: 0.8em;
+                  color: inherit;
+                  &:hover {
+                    color: #1890ff;
+                  }
+                }
+                .label {
+                  margin-bottom: 1em;
+                }
+                .content {
+                  margin-bottom: 1em;
+                }
+                .info {
+                  display: flex;
+                  align-items: center;
+                  margin-bottom: 1em;
+                  .name {
+                    margin-right: 8px;
+                  }
+                  .date {
+                    color: #979595;
+                    margin-left: 8px;
+                    font-size: 13px;
+                  }
+                  .ant-avatar {
+                    width: 20px;
+                    height: 20px;
+                    margin-right: 8px;
+                  }
+                }
+              }
+            }
+            .ant-pagination {
+              display: flex;
+              justify-content: center;
+              width: 100%;
+              position: absolute;
+              left: 0;
+              bottom: 20px;
+            }
+          }
+          .collect-list-wrapper {
+            height: 100%;
+            .ant-tabs {
+              height: 100%;
+              .ant-tabs-content {
+                height: 100%;
+                .collect-problem-wrapper {
+                  padding: 24px;
+                  .list {
+                    .title {
+                      line-height: 23px;
+                    }
+                    .item {
+                      padding: 10px 0 20px 16px;
+                      &:not(:nth-last-child(1)) {
+                        border-bottom: 1px solid #e8e8e8;
+                      }
+                      .issue {
+                        position: relative;
+                        &:before {
+                          content: "";
+                          display: block;
+                          width: 6px;
+                          height: 6px;
+                          border-radius: 3px;
+                          background-color: #52c41a;
+                          position: absolute;
+                          left: -12px;
+                          top: 8px;
+                        }
+                      }
+                    }
+                  }
+                }
+                .collect-article-wrapper {
+                  padding: 24px;
+                  .list {
+                    .item {
+                      padding: 10px 0 16px 10px;
+                      &:not(:nth-last-child(1)) {
+                        border-bottom: 1px solid #e8e8e8;
+                      }
+                      .header {
+                        display: flex;
+                        align-items: center;
+                        .ant-avatar {
+                          margin-right: 10px;
+                        }
+                        .title {
+                          font-size: 15px;
+                          font-weight: bold;
+                          &:hover {
+                            color: #1890ff;
+                          }
+                        }
+                      }
+                      .content {
+                        margin: 10px 0;
+                      }
+                      .date {
+                        color: #979595;
+                        font-size: 13px;
+                      }
+                      .zheye-ac-link {
+                        margin-top: 10px;
+                      }
+                    }
+                  }
+                }
+              }
+              .ant-tabs-bar {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                display: flex;
+                justify-content: center;
+              }
+            }
+          }
+          .data-center-wrapper {
+            padding: 24px;
+            background: rgb(244, 245, 247);
+            @include data-font-famaliy;
+            .ant-row {
+              margin-bottom: 16px;
+              .ant-statistic {
+                .ant-statistic-content-prefix .anticon-arrow-up {
+                  animation: updown .8s linear infinite alternate;
+                }
+              }
+              .pass-rate-wrapper {
+                .title {
+                  @include data-title;
+                }
+                .pass-rate-area {
+                  display: flex;
+                  .item {
+                    flex: 1;
+                    display: flex;
+                    flex-direction: column-reverse;
+                    justify-content: space-around;
+                    align-items: center;
+                    .label {
+                      font-size: 12px;
+                      margin-top: 8px;
+                      font-weight: 600;
+                    }
+                    .ant-progress-text {
+                      font-size: 24px;
+                    }
+                  }
+                }
+              }
+              .skill-wrapper {
+                h2 {
+                  @include data-title;
+                }
+              }
+              .recent-wrapper {
+                h2 {
+                  @include data-title;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .ant-card-bordered {
+      border: none;
+    }
+  }
+
+  .setup-wrapper {
+    width: 1200px;
+    margin: 30px auto 0 auto;
+    background: #fff;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.02);
+    padding: 16px;
+    .ant-tabs-tab {
+      padding: 8px 100px 8px 24px;
+    }
+    .ant-tabs-content {
+      padding-left: 40px;
+      .title {
+        color: rgba(0, 0, 0, 0.85);
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 28px;
+        margin-bottom: 12px;
+      }
+      .base {
+        display: flex;
+        padding: 20px 0 0 0;
+        .left {
+          width: 300px;
+        }
+        .right {
+          flex: 1;
+          padding-left: 100px;
+          .avatar-wrapper {
+            width: 200px;
+            height: 200px;
+            overflow: hidden;
+            border-radius: 100px;
+            position: relative;
+            .ant-avatar {
+              position: absolute;
+              left: 0;
+              right: 0;
+              top: 0;
+              bottom: 0;
+            }
+            .avatar-uploader {
+              position: absolute;
+              left: 0;
+              right: 0;
+              top: 0;
+              bottom: 0;
+              .ant-upload {
+                transform: translateY(0);
+                width: 100%;
+                height: 100%;
+                background: transparent;
+                border: none;
+                color: #fff;
+                font-weight: bold;
+                padding: 0;
+                &:hover {
+                  & > div {
+                    transform: translateY(0%);
+                    opacity: 1;
+                  }
+                }
+                & > div {
+                  transform: translateY(150%);
+                  transition: all 0.3s ease;
+                  opacity: 0;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .avatar-uploader > .ant-upload {
+      width: 128px;
+      height: 128px;
+      .ant-upload {
+        transform: none !important;
+      }
+      img {
+        width: 100%;
+        border-radius: 100%;
+      }
+    }
+  }
+}
+
+.zheye-ac-link {
+  color: rgba(0, 0, 0, 0.45);
+  span {
+    margin-right: 22px;
+    cursor: not-allowed;
+    .anticon {
+      margin-right: 5px;
+    }
+  }
+}
+
+@keyframes updown {
+  0% {
+    transform: translateY(5px);
+  }
+  100% {
+    transform: translateY(-5px);
+  }
+}

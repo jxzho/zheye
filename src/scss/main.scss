@@ -1,0 +1,13 @@
+@import './reset.scss';
+@import './antd.scss';
+
+.main-con {
+  position: absolute;
+  top: 56px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  .bf-content {
+    height: 100%;
+  }
+}

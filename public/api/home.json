@@ -1,0 +1,84 @@
+{
+  "success": true,
+  "data": {
+    "slideList": [
+      {
+        "id": 1,
+        "url": "//upload.jianshu.io/admin_banners/web_images/4620/c56b295694e97397f9845c532122994cdca622a7.png?imageMogr2/auto-orient/strip|imageView2/1/w/1250/h/540"
+      },
+      {
+        "id": 2,
+        "url": "//upload.jianshu.io/admin_banners/web_images/4592/2cbadf9347d69cfc140daf64de887fda0e361bcc.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/1250/h/540"
+      },
+      {
+        "id": 3,
+        "url": "//upload.jianshu.io/admin_banners/web_images/4617/8c9d800fc5f4b636dfccf4494159a3b8c22897c3.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/1250/h/540"
+      }
+    ],
+    "topicList": [
+      {
+        "id": 1,
+        "title": "React",
+        "imgUrl": "https://img.pc841.com/2018/0905/20180905031728569.jpg"
+      },
+      {
+        "id": 2,
+        "title": "Vue",
+        "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9EpR8zcmFs6PFU4GLO2rb_gYVd00eECKrjebPLjHuJW8CwG50"
+      },
+      {
+        "id": 3,
+        "title": "JS",
+        "imgUrl": "https://images.liqucn.com/img/h1/h994/img201802021439050_info300X300.jpg"
+      },
+      {
+        "id": 4,
+        "title": "CSS3",
+        "imgUrl": "http://img18.3lian.com/d/file/201705/25/f0bb60b3f57f47168aebed4f9ca58816.jpg"
+      },
+      {
+        "id": 5,
+        "title": "HTML",
+        "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvkkqp-uHa9YY_oJszDcvB0S8r1thY-M70weF2ss5YNNWYt7f5"
+      },
+      {
+        "id": 6,
+        "title": "Angular",
+        "imgUrl": "http://www.jituwang.com/uploads/allimg/130526/260218-130526112K499.jpg"
+      }
+    ],
+    "articleList": [
+      {
+        "id": 1,
+        "title": "从浏览器多进程到JS单线程，JS运行机制最全面的一次梳理",
+        "desc": "最近发现有不少介绍JS单线程运行机制的文章，但是发现很多都仅仅是介绍某一部分的知识，而且各个地方的说法还不统一，容易造成困惑。因此准备梳理这块知识点，结合已有的认知，基于网上的大量参考资料，从浏览器多进程到JS单线程，将JS引擎的运行机制系统的梳理一遍。展现形式：由于是属于系统梳理型，就没有由浅入深了，而是从头到尾的梳理知识体系，重点是将关键节点的知识点串联起来，而不是仅仅剖析某一部分知识。",
+        "imgUrl": "http://farm4.staticflickr.com/3795/9269794168_3ac58fc15c_b.jpg"
+      },
+      {
+        "id": 2,
+        "title": "vue开发中每个人都会遇到的问题",
+        "desc": "公司年初开始从jquery转型到vue开发，思想上从jquery的操作DOM到vue的操作数据，刚开始还不太习惯，但用了一段时间发现确实比较方便。在刚开始用vue的时候，也踩了一些坑，现在分享出来，供大家参考。",
+        "imgUrl": "http://blog.workingholidayforu.com/wp-content/uploads/2014/01/p02.jpg"
+      },
+      {
+        "id": 3,
+        "title": "vue开发中每个人都会遇到的问题",
+        "desc": "公司年初开始从jquery转型到vue开发，思想上从jquery的操作DOM到vue的操作数据，刚开始还不太习惯，但用了一段时间发现确实比较方便。在刚开始用vue的时候，也踩了一些坑，现在分享出来，供大家参考。",
+        "imgUrl": "http://blog.workingholidayforu.com/wp-content/uploads/2014/01/p02.jpg"
+      },
+      {
+        "id": 4,
+        "title": "vue开发中每个人都会遇到的问题",
+        "desc": "公司年初开始从jquery转型到vue开发，思想上从jquery的操作DOM到vue的操作数据，刚开始还不太习惯，但用了一段时间发现确实比较方便。在刚开始用vue的时候，也踩了一些坑，现在分享出来，供大家参考。",
+        "imgUrl": "http://blog.workingholidayforu.com/wp-content/uploads/2014/01/p02.jpg"
+      },
+      {
+        "id": 5,
+        "title": "vue开发中每个人都会遇到的问题",
+        "desc": "公司年初开始从jquery转型到vue开发，思想上从jquery的操作DOM到vue的操作数据，刚开始还不太习惯，但用了一段时间发现确实比较方便。在刚开始用vue的时候，也踩了一些坑，现在分享出来，供大家参考。",
+        "imgUrl": "http://blog.workingholidayforu.com/wp-content/uploads/2014/01/p02.jpg"
+      }
+    ]
+  },
+  "msg": "success"
+}

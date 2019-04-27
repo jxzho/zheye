@@ -1,0 +1,248 @@
+.practice-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #f0f2f5;
+  .ant-layout {
+    border-radius: 4px;
+    overflow: hidden;
+    .ant-layout-sider {
+      background: #fff;
+    }
+    .ant-layout-header {
+      background: transparent;
+      height: 61px;
+    }
+    .ant-layout-footer {
+      background: transparent;
+    }
+    .ant-progress-text {
+      font-size: 14px;
+      color: #f0f0f0;
+    }
+  }
+
+  .problem-panel {
+    position: relative;
+    background: #fff;
+    .header {
+      background: rgb(175, 187, 199);
+      height: 61px;
+      display: flex;
+      align-items: center;
+      padding: 0 30px;
+      .ant-progress-line {
+        width: 520px;
+        & > div {
+          display: flex;
+          align-items: center;
+          .ant-progress-outer {
+            padding: 0;
+            margin: 0;
+            display: flex;
+            align-items: center;
+          }
+        }
+      }
+      .progress-text {
+        color: #fff;
+        margin-left: 20px;
+      }
+    }
+    .issue-area {
+      padding: 25px 30px 40px 30px;
+      h2 {
+        font-size: 20px;
+      }
+      ul {
+        margin-top: 20px;
+        label {
+          display: flex;
+          align-items: center;
+          line-height: 50px;
+        }
+      }
+    }
+    footer {
+      padding: 10px 30px 20px 30px;
+      overflow: hidden;
+      .collect {
+        display: block;
+        float: left;
+      }
+      button {
+        float: right;
+      }
+      .ant-btn.ant-btn-primary {
+        margin-left: 15px;
+      }
+    }
+  }
+}
+
+.timer-wrapper {
+  flex: 1;
+  margin-left: 10px;
+  .timer-text {
+    font-size: 20px;
+    line-height: 20px;
+    font-weight: bold;
+    margin-left: 10px;
+    color: #f0f0f0;
+  }
+  text-align: center;
+}
+
+.type-select-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.upload-wrapper {
+  width: 800px;
+  margin: 30px auto 0 auto;
+}
+
+.result-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #f0f2f5;
+  overflow: auto;
+  .result-info-wrapper {
+    width: 800px;
+    margin: 30px auto;
+    background-color: #fff;
+    .access-wrapper {
+      display: flex;
+      padding: 24px;
+      .left {
+        width: 50%;
+        border-right: 1px solid #f0f0f0;
+        .title {
+          font-size: 16px;
+          font-weight: bold;
+          margin-bottom: 16px;
+          .anticon {
+            font-size: 30px;
+            margin-right: 8px;
+          }
+        }
+        .item {
+          font-size: 15px;
+          margin-bottom: 10px;
+          .ant-rate {
+            margin-left: 8px;
+          }
+        }
+        .ant-btn {
+          margin-top: 15px;
+        }
+      }
+      .right {
+        flex: 1;
+        padding: 0 30px;
+      }
+    }
+    .ant-card-body {
+      padding: 0;
+    }
+  }
+  .analysis-wrapper {
+    .problem-area {
+      padding: 24px;
+      .issue {
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 16px;
+      }
+      .ans {
+        .ans-result-area {
+          margin-bottom: 10px;
+          .ans-right {
+            margin-right: 10px;
+          }
+          .ans-mine {
+            margin-right: 10px;
+          }
+          .ans-result {
+            &.right {
+              color: #1890ff;
+            }
+            &.error {
+              color: #f8855b;
+            }
+          }
+        }
+        .ans-list {
+          .ans-item {
+            border-radius: 6px;
+            border: 1px solid #d4d4d4;
+            padding: 10px;
+            background: #fff;
+            font-size: 14px;
+            margin-bottom: 20px;
+            &.right {
+              border: 2px solid rgb(96, 219, 106);
+              color: #000;
+              font-weight: bold;
+            }
+            &.error {
+              border-color: #f8855b;
+            }
+          }
+        }
+      }
+    }
+    .pagination-area {
+      padding: 0 24px 20px 24px;
+    }
+    .comment-area {
+      border-top: 1px solid #f0f0f0;
+      padding: 24px 24px 0 24px;
+      .comment-count {
+        margin-bottom: 8px;
+      }
+      .comment-list {
+        .comment-item {
+          padding: 15px 0;
+          &:not(:nth-last-child(1)) {
+            border-bottom: 1px solid #f0f0f0;
+          }
+          .user {
+            margin-bottom: 10px;
+            .ant-avatar {
+              margin-right: 10px;
+            }
+          }
+          .content {
+            padding: 10px 0;
+          }
+          .footer {
+            display: flex;
+            font-size: 13px;
+            color: #999;
+            .date {
+              margin-right: 20px;
+            }
+            .like {
+              .anticon {
+                margin-right: 5px;
+              }
+            }
+          }
+        }
+      }
+    }
+    footer {
+      text-align: center;
+      padding-bottom: 24px;
+    }
+  }
+}

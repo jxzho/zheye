@@ -1,0 +1,50 @@
+$mianWidth: 780px;
+$leftWidth: 780px;
+
+.forum-wrapper {
+  background-color: #F8F8F8;
+  height: 100vh;
+  padding-top: 56px;
+  .forum-main-area {
+    margin: 20px auto 0 auto;
+    width: $mianWidth;
+    overflow: hidden;
+    .left {
+      width: $leftWidth;
+      float: left;
+      .content-wrapper {
+        
+        .ant-pagination {
+          margin-top: 10px;
+          display: flex;
+          justify-content: center;
+          .ant-pagination-item {
+            border-radius: 16px;
+            &:hover {
+              border-color: #3366ff;
+            }
+          }
+          .ant-pagination-item-active {
+            border-color: #3366ff;
+            background-color: #3366ff;
+            color: #fff;
+          }
+          .ant-pagination-item-link {
+            border: none;
+            &:hover {
+              i {
+                transform: scale(1.2);
+                color: #3366ff;
+              }
+            }
+          }
+        }
+      }
+    }
+    .right {
+      width: $mianWidth - $leftWidth - 20px;
+      background: #000;
+      float: right;
+    }
+  }
+}

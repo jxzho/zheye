@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "userAvatar": "https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png",
+    "userNickname": "拾月拾月",
+    "content": "创建新数组： var arr =［］; var arr = new Array ( ); 注意： var arr = new Array(值1，值2，值3…… ); 创建新数组并给数组默认值。 var arr = new Array ( num); num具体的数字，表示创建一个num个元素的数组，也就是arr.length = num ， var arr = new Array ( 0); 清空数组",
+    "like": 134,
+    "creatAt": 1553247687393
+  },
+  {
+    "id": 2,
+    "userAvatar": "https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png",
+    "userNickname": "拾月拾月",
+    "content": "创建新数组： var arr =［］; var arr = new Array ( ); 注意： var arr = new Array(值1，值2，值3…… ); 创建新数组并给数组默认值。 var arr = new Array ( num); num具体的数字，表示创建一个num个元素的数组，也就是arr.length = num ， var arr = new Array ( 0); 清空数组",
+    "like": 54,
+    "creatAt": 1553247680000
+  },
+  {
+    "id": 3,
+    "userAvatar": "https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png",
+    "userNickname": "拾月拾月",
+    "content": "创建新数组： var arr =［］; var arr = new Array ( ); 注意： var arr = new Array(值1，值2，值3…… ); 创建新数组并给数组默认值。 var arr = new Array ( num); num具体的数字，表示创建一个num个元素的数组，也就是arr.length = num ， var arr = new Array ( 0); 清空数组",
+    "like": 54,
+    "creatAt": 1553247680000
+  }
+]

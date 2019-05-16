@@ -12,11 +12,11 @@ import * as React from "react";
 import DataSet from "@antv/data-set";
 
 const sourceData = [
-  { item: "javascript", rate: 20 },
-  { item: "css", rate: 22 },
-  { item: "html", rate: 20 },
-  { item: "react", rate: 20 },
-  { item: "vue", rate: 20 }
+  { item: "javascript", rate: 5 },
+  { item: "css", rate: 0 },
+  { item: "html", rate: 0 },
+  { item: "react", rate: 0 },
+  { item: "vue", rate: 0 }
 ];
 
 const dv = new DataSet.View().source(sourceData);

@@ -7,6 +7,7 @@ const user = local("user") ? local("user") : {
     avatar: ''
   }
 };
+
 const defaultState = fromJS({
   user,
   info: {
@@ -67,6 +68,8 @@ const reducer = (state = defaultState, action) => {
       return state.set("dataCenter", action.data);
     case constants.CHANGE_RECORD:
       return state.setIn(["info", "record"], true);
+    case constants.CLEAR_USER:
+      return state.set("user", {});
     default:
       return state;
   }

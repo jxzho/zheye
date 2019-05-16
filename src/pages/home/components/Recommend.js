@@ -22,6 +22,13 @@ class Recommend extends PureComponent {
   render() {
     return (
       <RecommendWrapper>
+        <Link to="/learn-route">
+          <RecommendItem bgColor="#F8855B">
+            <Icon type="swap-right" theme="filled" />
+            学习路线
+            <Icon type="caret-right" theme="filled" className="right" />
+          </RecommendItem>
+        </Link>
         <RecommendItem bgColor="#FFB84F" onClick={this.goPractice}>
           <Icon type="edit" theme="filled" />
           去做题

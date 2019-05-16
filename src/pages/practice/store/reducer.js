@@ -5,6 +5,7 @@ const defaultState = fromJS({
   on: false,
   type: "",
   num: "",
+  grade: "",
   issues: [],
   done: [],
   duration: 0
@@ -44,6 +45,8 @@ export default (state = defaultState, action) => {
       return state.set("duration", action.data);
     case constants.CLEAR_DONE:
       return state.set("done", []);
+    case constants.CHANGE_GRADE:
+      return state.set("grade", action.data);
     default:
       break;
   }

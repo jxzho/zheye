@@ -1,10 +1,11 @@
 import axios from "axios";
 
-const getArticle = (page, pageSize) => {
+const getArticle = (page, pageSize, contentType = '') => {
   return axios.get("/article", {
     params: {
       page,
-      pageSize
+      pageSize,
+      contentType
     }
   });
 };
@@ -21,9 +22,23 @@ const collectArticle = data => {
   return axios.post("/article/collect", data);
 }
 
+const addArticleComment = data => {
+  return axios.put("/article/addComment", data);
+}
+
+const searchArticle = contentType => {
+  return axios.get("/article/search", {
+    params: {
+      contentType
+    }
+  });
+}
+
 export default {
   getArticle,
   getArticleDetail,
   addArticle,
-  collectArticle
+  collectArticle,
+  addArticleComment,
+  searchArticle
 };

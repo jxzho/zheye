@@ -1,0 +1,35 @@
+.learn-route-panel {
+    margin: 20px;
+
+    .menu-content {
+        flex: 1;
+    }
+
+    header.brief-area {
+        margin-bottom: 50px;
+        h2 {
+            font-size: 20px;
+            font-weight: 500;
+        }
+        p {
+            text-indent: 2em;
+        }
+        mark {
+            border-radius: 4px;
+        }
+    }
+
+    .steps-content {
+        margin-top: 16px;
+        border: 1px dashed #e9e9e9;
+        border-radius: 6px;
+        background-color: #fafafa;
+        min-height: 200px;
+        text-align: center;
+        padding-top: 80px;
+      }
+      
+    .steps-action {
+        margin-top: 24px;
+    }
+}

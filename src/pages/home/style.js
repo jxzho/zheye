@@ -7,6 +7,10 @@ export const HomeWrapper = styled.div`
   margin-top: 20px;
 `;
 
+export const HomeRight = styled.div`
+  width: 280px;
+  float: right;
+`;
 export const HomeLeft = styled.div`
   width: 625px;
   margin-left: 25px;
@@ -20,15 +24,13 @@ export const HomeLeft = styled.div`
     }
   }
 `;
-export const HomeRight = styled.div`
-  width: 280px;
-  float: right;
-`;
 
 export const TopicWrapper = styled.div`
   padding: 20px 0 10px 0;
   overflow: hidden;
-  border-bottom: 1px solid #f0f0f0;
+  .topic-list {
+    margin-top: 10px;
+  }
 `;
 
 export const TopicItem = styled.div`
@@ -53,8 +55,16 @@ export const TopicItem = styled.div`
 `;
 
 export const ListItem = styled.div`
-  padding: 20px 0;
-  border-bottom: 1px solid #f0f0f0;
+  margin: 20px 0 10px 0;
+  border-right: 10px solid #1890FF;
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+  height: 150px;
+  position: relative;
+  &:hover {
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
+  }
+
   .show-content {
     display: flex;
     align-items: center;
@@ -65,15 +75,20 @@ export const ListItem = styled.div`
       border-radius: 2px;
     }
   }
+
+  .zheye-ac-link {
+    position: absolute;
+    bottom: 0;
+  }
 `;
 
 export const ListInfo = styled.div`
-  width: 500px;
+  width: 100%;
   float: left;
   margin-right: 20px;
   .title {
-    line-height: 27px;
-    font-size: 18px;
+    line-height: 20px;
+    font-size: 15px;
     font-weight: bold;
   }
   .desc {

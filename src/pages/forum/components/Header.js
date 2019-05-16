@@ -1,15 +1,15 @@
 import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import { Area } from "../style";
-import { actionCreators as forumAction } from '../store'
+import { actionCreators as forumAction } from "../store";
 
 const Tabs = {
-  所有: "all",
-  JS: 'javascript',
-  HTML: 'html',
-  CSS: 'css',
-  REACT: 'react',
-  VUE: 'vue',
+  所有: "",
+  JS: "javascript",
+  HTML: "html",
+  CSS: "css",
+  REACT: "react",
+  VUE: "vue"
 };
 
 class Header extends PureComponent {
@@ -22,6 +22,7 @@ class Header extends PureComponent {
       activeText: text
     });
     this.props.changeType(Tabs[text]);
+    this.props.getArticles(1, 7, Tabs[text]);
   };
 
   render() {
@@ -46,7 +47,9 @@ class Header extends PureComponent {
 const mapState = state => ({});
 
 const mapDispatch = dispatch => ({
-  changeType: type => dispatch(forumAction.changeType(type))
+  changeType: type => dispatch(forumAction.changeType(type)),
+  getArticles: (page, pageSize, contentType) =>
+    dispatch(forumAction.getArticles(page, pageSize, contentType))
 });
 
 export default connect(

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Avatar, Menu, Dropdown, Icon } from "antd";
 import "../style.scss";
 import { actionCreators as loginActions } from "../../../pages/login/store";
+import { actionCreators as userAction } from "../../user/store";
 
 class UserMenu extends Component {
   render() {
@@ -28,14 +29,8 @@ class UserMenu extends Component {
             收藏
           </Link>
         </Menu.Item>
-        <Menu.Divider />
-        <Menu.Item key="4">
-          <Link to="/practice/upload">
-            <Icon type="upload" />
-            题库上传
-          </Link>
-        </Menu.Item>
-        <Menu.Item key="5" onClick={logout}>
+
+        <Menu.Item key="4" onClick={logout}>
           <Icon type="logout" />
           退出登录
         </Menu.Item>
@@ -47,7 +42,7 @@ class UserMenu extends Component {
           <div className="img-wrapper">
             <Avatar src={info.get("avatar")} />
           </div>
-          junxio
+          <span>{info.get("nickname")}</span>
         </div>
       </Dropdown>
     );
@@ -55,11 +50,15 @@ class UserMenu extends Component {
 }
 
 const mapStateToProps = state => ({
-  info: state.getIn(["user", "info"])
+  info: state.getIn(["user", "info"]),
+  auth: state.getIn(["user", "user", "auth"])
 });
 
 const mapDispatchToProps = dispatch => ({
-  logout: () => dispatch(loginActions.logout())
+  logout: () => {
+    dispatch(loginActions.logout());
+    dispatch(userAction.Logout());
+  }
 });
 
 export default connect(

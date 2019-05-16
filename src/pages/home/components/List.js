@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { ListItem, ListInfo, LoadMore } from "../style";
-import { Icon } from "antd";
+import { Icon, Tag } from "antd";
 import { actionCreators } from "../store";
 import { Link } from "react-router-dom";
 import { stripHTML } from "../../../utils";
@@ -13,7 +13,8 @@ class List extends Component {
   render() {
     const { list, getMoreList, page, pageSize } = this.props;
     return (
-      <div>
+      <div className="article-list">
+        <Tag color="#108ee9">文章区</Tag>
         {list.map(item => {
           const id = item.get("id");
           const title = item.get("title");
@@ -32,7 +33,7 @@ class List extends Component {
                   </Link>
                   <p className="desc">{this.shortDesc(stripHTML(content))}</p>
                 </ListInfo>
-                <img className="pic" src={imgUrl} alt="" />
+                {/* <img className="pic" src={imgUrl} alt="" /> */}
               </div>
               <ZLink source={{ like, collect, comment: commentCount }} />
             </ListItem>

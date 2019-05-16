@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Input, Button } from "antd";
 import { actionCreators } from "./store";
 
-class LoginForm extends PureComponent {
+class AdminLogin extends PureComponent {
   state = {
     account: "",
     password: ""
@@ -20,7 +20,7 @@ class LoginForm extends PureComponent {
   handleOnKeyDown = e => {
     if (e.which === 13) {
       const { account, password } = this.state;
-      this.props.handleLogin(account, password);
+      this.props.handleLogin(account, password, "admin");
     }
   };
 
@@ -30,9 +30,9 @@ class LoginForm extends PureComponent {
     return (
       <div className="login-form" onKeyDown={this.handleOnKeyDown}>
         <div className="login-input-area">
-          <Input placeholder="你的用户名" onChange={this.handleACTChange} />
+          <Input placeholder="你的用户名（管理员）" onChange={this.handleACTChange} />
           <Input
-            placeholder="密码"
+            placeholder="密码（管理员）"
             type="password"
             onChange={this.handlePSWChange}
           />
@@ -42,7 +42,7 @@ class LoginForm extends PureComponent {
           shape="round"
           disabled={isAccAndPWDNull}
           onClick={() => {
-            this.props.handleLogin(account, password);
+            this.props.handleLogin(account, password, "admin");
           }}
         >
           登陆
@@ -55,12 +55,12 @@ class LoginForm extends PureComponent {
 const mapState = state => ({});
 
 const mapDispatch = dispatch => ({
-  handleLogin: (acc, pwd) => {
-    dispatch(actionCreators.login(acc, pwd));
+  handleLogin: (acc, pwd, type) => {
+    dispatch(actionCreators.login(acc, pwd, type));
   }
 });
 
 export default connect(
   mapState,
   mapDispatch
-)(LoginForm);
+)(AdminLogin);

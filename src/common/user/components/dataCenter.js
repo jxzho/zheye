@@ -4,6 +4,7 @@ import { Statistic, Card, Row, Col, Icon } from "antd";
 import PassRate from "./data_center/pass";
 import Skill from "./data_center/skill";
 import Recent from "./data_center/recent";
+import Rank from './data_center/rank';
 import { Scrollbars } from "react-custom-scrollbars";
 import { actionCreators as userAction } from '../store';
 
@@ -11,7 +12,7 @@ const colSpan = 8;
 
 class DataCenter extends Component {
   render() {
-    const { finish = {}, like } = this.props;
+    const { finish = {}, like, grow } = this.props;
     return (
       <Scrollbars style={{ width: "100%" }}>
         <div className="data-center-wrapper">
@@ -20,7 +21,7 @@ class DataCenter extends Component {
               <Card>
                 <Statistic
                   title="做题增长"
-                  value={11.28}
+                  value={grow * 100}
                   precision={2}
                   valueStyle={{ color: "#3f8600" }}
                   prefix={<Icon type="arrow-up" />}
@@ -64,6 +65,13 @@ class DataCenter extends Component {
               </Card>
             </Col>
           </Row>
+          <Row gutter={16}>
+            <Col span={24}>
+              <Card>
+                <Rank />
+              </Card>
+            </Col>
+          </Row>
         </div>
       </Scrollbars>
     );
@@ -77,7 +85,8 @@ class DataCenter extends Component {
 const mapState = state => ({
   userId: state.getIn(["user", "user", "id"]),
   finish: state.getIn(["user", "dataCenter", "finish"]),
-  like: state.getIn(["user", "dataCenter", "like"])
+  like: state.getIn(["user", "dataCenter", "like"]),
+  grow: state.getIn(["user", "dataCenter", "grow"])
 });
 
 const mapDispatch = dispatch => ({

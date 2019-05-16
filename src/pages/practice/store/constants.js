@@ -6,3 +6,4 @@ export const CHANGE_ISSUES = 'CHANGE_ISSUES';
 export const CHANGE_DONE = 'CHANGE_DONE';
 export const CHANGE_DURATION = 'CHANGE_DURATION';
 export const CLEAR_DONE = 'CLEAR_DONE';
+export const CHANGE_GRADE = 'CHANGE_GRADE';

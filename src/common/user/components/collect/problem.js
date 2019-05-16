@@ -16,7 +16,7 @@ class CollectProblem extends Component {
             {problem.map(item => (
               <li className="item" key={item.get("id")}>
                 <p className="issue">{item.getIn(["problem", "issue"])}</p>
-                <Tag color="#108ee9">{item.getIn(["problem", "type"])}</Tag>
+                <Tag color="#108ee9">{item.getIn(["problem", "contentType"])}</Tag>
               </li>
             ))}
           </ul>

@@ -20,6 +20,11 @@ export const changeNum = data => ({
   data
 });
 
+export const changeGrade = data => ({
+  type: constants.CHANGE_GRADE,
+  data
+});
+
 export const changeIssues = data => ({
   type: constants.CHANGE_ISSUES,
   data
@@ -48,9 +53,9 @@ export const uploadProblems = data => {
   };
 };
 
-export const getProblems = (type, num) => {
+export const getProblems = (type, data) => {
   return dispatch => {
-    api.getProblems(type, num).then(res => {
+    api.getProblems(type, data).then(res => {
       const data = res.data;
       if (data.result && data.data.length !== 0) {
         message.success("初始化成功！");

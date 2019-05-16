@@ -10,15 +10,22 @@ const changeLogin = () => ({
   type: constants.CHANGE_LOGIN
 })
 
+const changeType = () => ({
+  type: constants.CHANGE_TYPE
+})
+
 export const logout = () => ({
   type: constants.LOGOUT
 })
 
-export const login = (acc, pwd) => {
+export const login = (acc, pwd, type) => {
   return dispatch => {
-    api.login(acc, pwd).then(res => {
+    api.login(acc, pwd, type).then(res => {
       const { result, msg, data } = res.data;
       if (result) {
+        if (data.auth === 2) {
+          dispatch(changeType());
+        }
         dispatch(changeLogin());
         dispatch(userAction.changeUser(data));
         dispatch(userAction.changeInfo(data.info));

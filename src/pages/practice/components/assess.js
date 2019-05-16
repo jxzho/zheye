@@ -14,7 +14,7 @@ class Assess extends PureComponent {
     const { done } = this.props;
     let right = 0;
     done.forEach(item => {
-      if (item.get('userAns') === item.get('right')) {
+      if (item.get('userAns') == item.get('right')) {
         right++;
       }
     });
@@ -44,7 +44,6 @@ class Assess extends PureComponent {
           </div>
           <div className="item">得分： {score}</div>
           <div className="item">用时： {timeFormat(duration)}</div>
-          <Button type="primary">打卡</Button>
         </div>
         <div className="right">
           <Radar />

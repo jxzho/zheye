@@ -45,8 +45,7 @@ class CollectArticle extends Component {
                   source={{
                     collect: item.getIn(["article", "collect"]),
                     like: item.getIn(["article", "like"]),
-                    comment: JSON.parse(item.getIn(["article", "commentId"]))
-                      .length
+                    comment: 12
                   }}
                 />
               </li>

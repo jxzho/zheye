@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const login = (account, password) => {
-  return axios.post('/user/login', {
+const login = (account, password, type = "general") => {
+  return axios.post(`/user/login?type=${type}`, {
     account, password
   });
 }

@@ -1,9 +1,11 @@
 import React, { PureComponent } from "react";
 import { connect } from "react-redux";
-import { Form, Input, Button, Select, Typography, Checkbox } from "antd";
-import { issueTypes, problemTypes } from "./config";
+import { Form, Input, Button, Select, Typography, Radio, Checkbox } from "antd";
+import { issueTypes, problemTypes, gradeTypes } from "./config";
 import { actionCreators as problemAction } from "./store";
+
 const Option = Select.Option;
+const RadioGroup = Radio.Group;
 const { Paragraph } = Typography;
 
 class Upload extends PureComponent {
@@ -11,8 +13,13 @@ class Upload extends PureComponent {
     issue: "",
     ans: ["", "", "", ""],
     right: -1,
-    type: issueTypes[0],
-    problemType: problemTypes[0]
+    multiRight: [],
+    judgeRight: false,
+    contentType: issueTypes[0],
+    problemType: Object.keys(problemTypes)[0],
+    curRadio: -1,
+    grade: "简单",
+    solution: ""
   };
 
   formChange = e => {
@@ -26,7 +33,7 @@ class Upload extends PureComponent {
 
   typeChange = value => {
     this.setState({
-      type: value
+      contentType: value
     });
   };
 
@@ -42,26 +49,68 @@ class Upload extends PureComponent {
     });
   };
 
-  selectRight = (index, checked) => {
+  selectRight = (index) => {
     this.setState({
       right: index
     });
   };
 
+  radioOnChange = e => {
+    this.setState({ curRadio: e.target.value });
+    this.selectRight(e.target.value);
+  }
+
+  multiOnChange = (index, e) => {
+    const checked = e.target.checked;
+    const { multiRight } = this.state;
+    const newMultiRight = [...multiRight];
+    newMultiRight.push(index);
+    if (checked) {
+      this.setState({
+        multiRight: newMultiRight
+      });
+    }
+  }
+
+  judgeOnChange = e => {
+    this.setState({
+      judgeRight: e.target.checked
+    });
+  }
+
+  gradeTypeChange = value => {
+    this.setState({
+      grade: value
+    });
+  }
+
   renderAns = () => {
     const { problemType, ans } = this.state;
     switch (problemType) {
-      case "single":
-        return null;
-      case "multiple":
+      case "单选":
+        return (
+          <RadioGroup
+            style={{ display: 'flex', flexDirection: 'column' }}
+            onChange={this.radioOnChange}
+            value={this.state.curRadio}
+          >
+            {ans.map((item, index) => {
+              return (
+                <Radio key={"radio" + index} value={index}>
+                  <Input onChange={e => {
+                    this.ansChange(index, e.target.value);
+                  }} />
+                </Radio>
+              )
+            })}
+          </RadioGroup>
+        );
+      case "多选":
         return ans.map((item, index) => (
           <div key={index} style={{ display: "flex" }}>
             <Checkbox
               style={{ marginRight: "8px" }}
-              onChange={e => {
-                const checked = e.target.checked;
-                this.selectRight(index, checked);
-              }}
+              onChange={this.multiOnChange.bind(null, index)}
             />
             <Paragraph
               editable={{
@@ -74,14 +123,30 @@ class Upload extends PureComponent {
             </Paragraph>
           </div>
         ));
+      case "判断":
+        return (
+          <div style={{ display: "flex" }}>
+            <Checkbox
+              style={{ marginRight: "8px" }}
+              onChange={this.judgeOnChange}
+            />
+            <Input
+              onChange={e => {
+                this.setState({ ans: e.target.value })
+              }}
+            />
+          </div>
+        );
       default:
-        return null;
+        return '请选择一个题型';
     }
   };
 
   infoSubmit = () => {
+    const { problemType } = this.state;
     const data = { ...this.state };
     data.ans = JSON.stringify(data.ans);
+    data.multiRight = JSON.stringify(data.multiRight);
     this.props.uploadProblem(data);
     this.setState({
       issue: "",
@@ -91,7 +156,7 @@ class Upload extends PureComponent {
   };
 
   render() {
-    const { issue, type, problemType } = this.state;
+    const { issue, contentType, problemType, grade } = this.state;
     return (
       <div className="upload-wrapper">
         <Form layout="vertical" onChange={this.formChange}>
@@ -104,7 +169,20 @@ class Upload extends PureComponent {
               style={{ width: 120 }}
               onChange={this.problemTypeChange}
             >
-              {problemTypes.map(item => (
+              {Object.keys(problemTypes).map(item => (
+                <Option value={item} key={item}>
+                  {item}
+                </Option>
+              ))}
+            </Select>
+          </Form.Item>
+          <Form.Item label="难度">
+            <Select
+              defaultValue={grade}
+              style={{ width: 120 }}
+              onChange={this.gradeTypeChange}
+            >
+              {gradeTypes.map(item => (
                 <Option value={item} key={item}>
                   {item}
                 </Option>
@@ -113,7 +191,7 @@ class Upload extends PureComponent {
           </Form.Item>
           <Form.Item label="类型">
             <Select
-              defaultValue={type}
+              defaultValue={contentType}
               style={{ width: 120 }}
               onChange={this.typeChange}
             >
@@ -125,6 +203,9 @@ class Upload extends PureComponent {
             </Select>
           </Form.Item>
           <Form.Item label="答案">{this.renderAns()}</Form.Item>
+          <Form.Item label="解析">
+            <Input.TextArea onChange={e => { this.setState({ solution: e.target.value }) }} />
+          </Form.Item>
           <Form.Item>
             <Button type="primary" onClick={this.infoSubmit}>
               上传该题
@@ -136,7 +217,8 @@ class Upload extends PureComponent {
   }
 }
 
-const mapState = state => ({});
+const mapState = state => ({
+});
 
 const mapDispatch = dispatch => ({
   uploadProblem: data => dispatch(problemAction.uploadProblems(data))

@@ -59,6 +59,9 @@ export const ContainerItem = styled.div`
     font-weight: bold;
   }
   &.btn {
+    height: 100%;
+    display: flex;
+    align-items: center;
     &:hover {
       background: transparent;
     }
@@ -166,7 +169,6 @@ export const ZyBtn = styled.div`
   color: #fff;
   padding: 0 20px;
   border-radius: 16px;
-  margin: 12px 0 0 0;
   &:hover {
     filter: brightness(110%);
   }

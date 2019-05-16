@@ -57,9 +57,7 @@ class Detail extends PureComponent {
                         </span>
                       </div>
                     </div>
-                    <div className="content">
-                      {content}
-                    </div>
+                    <div className="content" dangerouslySetInnerHTML={{ __html: content }} />
                     <div className="footer">
                       <Icon type="like" />{like}
                     </div>

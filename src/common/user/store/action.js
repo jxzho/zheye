@@ -113,3 +113,11 @@ export const getRecord = id => {
     })
   }
 }
+
+export const Logout = () => {
+  return dispatch => {
+    dispatch({
+      type: constants.CLEAR_USER
+    });
+  }
+}

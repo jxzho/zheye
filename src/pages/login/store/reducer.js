@@ -5,7 +5,8 @@ import { local } from '../../../utils';
 const defaultLogin = local('user') ? true : false;
 
 const defaultState = fromJS({
-  login: defaultLogin
+  login: defaultLogin,
+  type: ""
 });
 
 const logout = (state, action) => {
@@ -15,10 +16,12 @@ const logout = (state, action) => {
 
 export default (state = defaultState, action) => {
   switch (action.type) {
-    case constants.CHANGE_LOGIN: 
+    case constants.CHANGE_LOGIN:
       return state.set('login', true);
-    case constants.LOGOUT: 
+    case constants.LOGOUT:
       return logout(state, action);
+    case constants.CHANGE_TYPE:
+      return state.set('type', "admin");
     default:
       break;
   }

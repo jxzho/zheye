@@ -90,17 +90,17 @@ class Info extends Component {
               <h2 className="name">{info.get("nickname")}</h2>
               <span className="brief">{info.get("brief")}</span>
               <div className="sub">
-                关注我 3
+                关注我 0
                 <Divider type="vertical" />
-                我关注 4
+                我关注 0
               </div>
             </div>
             {this.InfoItem("mail", info.get("email"))}
             {this.InfoItem("mobile", info.get("tel"))}
+            {this.InfoItem("environment", "")}
             <a href="http://localhost:3001" target="blank">
-              {this.InfoItem("paper-clip", "我的简历")}
+              {this.InfoItem("paper-clip", "制作简历")}
             </a>
-            {this.InfoItem("environment", "广东省深圳市龙岗区")}
             <Divider dashed={true} />
             <div className="title">标签</div>
             <div>

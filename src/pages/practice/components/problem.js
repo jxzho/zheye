@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { Progress, Button, Radio, Rate } from "antd";
+import { Progress, Button, Radio, Rate, Checkbox } from "antd";
 import Timer from "./timer";
 import { actionCreators as practiceAction } from "../store";
 import { actionCreators as modalAction } from "../../../common/modal/store";
@@ -10,7 +10,8 @@ const RadioGroup = Radio.Group;
 class Problem extends PureComponent {
   state = {
     curIndex: 0,
-    ansIndex: -1
+    ansIndex: -1,
+    mulitiAns: []
   };
 
   selectAnswer = e => {
@@ -27,7 +28,8 @@ class Problem extends PureComponent {
       userId: user.get("id"),
       problemId: issues.getIn([curIndex, "id"]),
       userAns: ansIndex,
-      right: issues.getIn([curIndex, "right"])
+      right: issues.getIn([curIndex, "right"]),
+      problemType: issues.getIn([curIndex, "problemType"]),
     };
     changeDone(data);
 
@@ -86,6 +88,77 @@ class Problem extends PureComponent {
     }, 0);
   };
 
+  multiOnChange = (index, e) => {
+    const { mulitiAns } = this.state;
+    const newMulitiAns = [...mulitiAns];
+    if (e.target.checked) {
+      newMulitiAns.push(index);
+      this.setState({
+        ansIndex: JSON.stringify(newMulitiAns),
+        mulitiAns: newMulitiAns
+      });
+    }
+  };
+
+  judegOnChange = (e) => {
+    this.setState({ ansIndex: e.target.checked });
+  }
+
+  renderAns = () => {
+    const { issues } = this.props;
+    const { curIndex } = this.state;
+    const f = issues.get(curIndex);
+    if (f.get('problemType') === '单选') {
+      return (
+        <div className="issue-area">
+          <h2>{`${curIndex + 1}. ${f.get("issue")}`}</h2>
+          <ul>
+            <RadioGroup onChange={this.selectAnswer} key={curIndex}>
+              {JSON.parse(f.get("ans")).map((item, index) => (
+                <Radio key={item + index} value={index}>
+                  {item}
+                </Radio>
+              ))}
+            </RadioGroup>
+          </ul>
+        </div>
+      )
+    }
+    if (f.get('problemType') === '多选') {
+      return (
+        <div className="issue-area">
+          <h2>{`${curIndex + 1}. ${f.get("issue")}`}</h2>
+          <ul>
+            {
+              JSON.parse(f.get("ans")).map((item, index) => (
+                <Checkbox
+                  onChange={this.multiOnChange.bind(null, index)}
+                  key={index}
+                >
+                  {item}
+                </Checkbox>
+              ))
+            }
+          </ul>
+        </div>
+      );
+    }
+    if (f.get('problemType') === '判断') {
+      return (
+        <div className="issue-area">
+          <h2>{`${curIndex + 1}. ${f.get("issue")}`}</h2>
+          <ul>
+            <Checkbox
+              onChange={this.judegOnChange}
+            >
+              {f.get("ans")}
+            </Checkbox>
+          </ul>
+        </div>
+      );
+    }
+  };
+
   render() {
     const { issues } = this.props;
     const { curIndex } = this.state;
@@ -104,20 +177,7 @@ class Problem extends PureComponent {
             {this.progressText()}
             <Timer />
           </header>
-          {f ? (
-            <div className="issue-area">
-              <h2>{`${curIndex + 1}. ${f.get("issue")}`}</h2>
-              <ul>
-                <RadioGroup onChange={this.selectAnswer} key={curIndex}>
-                  {JSON.parse(f.get("ans")).map((item, index) => (
-                    <Radio key={item + index} value={index}>
-                      {item}
-                    </Radio>
-                  ))}
-                </RadioGroup>
-              </ul>
-            </div>
-          ) : null}
+          {f ? this.renderAns() : null}
           <footer>
             <span className="collect">
               <Rate

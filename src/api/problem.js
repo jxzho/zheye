@@ -22,9 +22,19 @@ const collectProblem = data => {
   return axios.post("/problem/collect", data);
 }
 
+const getProblemComments = id => {
+  return axios.get(`/problem/comment/${id}`);
+}
+
+const addProblemComment = data => {
+  return axios.put('/problem/addComment', data);
+}
+
 export default {
   getProblems,
   uploadProblems,
   uploadProblemsDone,
-  collectProblem
+  collectProblem,
+  getProblemComments,
+  addProblemComment
 }

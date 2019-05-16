@@ -1,0 +1,30 @@
+.admin-main-con {
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(0, 0, 0, .5);
+    header {
+        display: flex;
+        align-items: center;
+        height: 30px;
+        padding: 0 0 0 20px;
+        border-bottom: 1px solid #fff;
+    }
+    .ant-layout {
+        height: 100%;
+        .ant-layout-sider {
+            
+        }
+        .ant-menu {
+            height: 100%;
+        }
+        .ant-layout-content {
+            position: absolute;
+            left: 256px;
+            right: 0;
+            bottom: 0;
+            top: 30px;
+            padding: 30px;
+        }
+    }
+}

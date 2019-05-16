@@ -2,11 +2,12 @@ import React, { PureComponent } from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import BraftEditor from "braft-editor";
-import { Modal, Form, Input, Tag, message } from "antd";
+import { Modal, Form, Input, message, Select } from "antd";
 import "braft-editor/dist/index.css";
 import "./style.scss";
 import api from "../../api";
 import ReactMarkdown from "react-markdown";
+const Option = Select.Option;
 
 const extendControls = [
   {
@@ -25,7 +26,8 @@ class Main extends PureComponent {
     editorState: BraftEditor.createEditorState(null),
     title: "",
     visible: false,
-    confirmLoading: false
+    confirmLoading: false,
+    contentType: "javascript"
   };
 
   handleEditorChange = editorState => {
@@ -46,16 +48,16 @@ class Main extends PureComponent {
     this.setState({ visible: true });
   };
 
-  handleOk = (content) => {
+  handleOk = content => {
     const { user, history } = this.props;
-    const { title } = this.state;
+    const { title, contentType } = this.state;
     const id = user.get("id");
     const data = {
       userId: id,
       title,
+      contentType,
       content
     };
-
     this.setState({ confirmLoading: true });
     api.addArticle(data).then(res => {
       const data = res.data;
@@ -103,7 +105,7 @@ class Main extends PureComponent {
           {mode ? <ReactMarkdown source={content} /> : null}
         </div>
         <Modal
-          title="标题填写 / 标签选择"
+          title="标题填写 / 类别选择"
           visible={visible}
           onOk={this.handleOk.bind(null, content)}
           onCancel={() => {
@@ -116,10 +118,18 @@ class Main extends PureComponent {
             <Form.Item label="标题">
               <Input value={title} name="title" onChange={this.formChange} />
             </Form.Item>
-            <Form.Item label="标签">
-              <Tag>前端</Tag>
-              <Tag>JS</Tag>
-              <Tag>Vue</Tag>
+            <Form.Item label="类别">
+              <Select
+                defaultValue="javascript"
+                style={{ width: 120 }}
+                onChange={value => { this.setState({ contentType: value }) }}
+              >
+                <Option value="javascript">javascript</Option>
+                <Option value="css">css</Option>
+                <Option value="html">html</Option>
+                <Option value="react">react</Option>
+                <Option value="vue">yiminghe</Option>
+              </Select>
             </Form.Item>
           </Form>
         </Modal>

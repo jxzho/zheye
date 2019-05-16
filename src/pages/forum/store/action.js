@@ -11,9 +11,9 @@ const changeTotal = data => ({
   data
 })
 
-export const getArticles = (page, pageSize) => {
+export const getArticles = (page, pageSize, contentType) => {
   return dispatch => {
-    api.getArticle(page, pageSize).then(res => {
+    api.getArticle(page, pageSize, contentType).then(res => {
       const data = res.data;
       if (data.result) {
         dispatch(changeData(data.data.rows));
@@ -31,3 +31,14 @@ export const changeType = type => {
     });
   }
 }
+
+export const searchArticle = contentType => {
+  return dispatch => {
+    api.searchArticle(contentType).then(res => {
+      const data = res.data;
+      if (data.result) {
+        
+      }
+    });
+  }
+};

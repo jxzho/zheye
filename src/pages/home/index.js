@@ -31,7 +31,7 @@ class Home extends PureComponent {
           <BackTop />
         </HomeWrapper>
       </div>
-    );
+    )
   }
 
   componentDidMount() {
@@ -40,7 +40,10 @@ class Home extends PureComponent {
   }
 }
 
-const mapState = null;
+const mapState = state => ({
+  type: state.getIn(["login", "type"])
+});
+
 const mapDispatch = dispatch => ({
   changeHomeData: () => dispatch(action.changeHomeData()),
   clearDone: () => dispatch(practiceAction.clearDone())

@@ -266,6 +266,11 @@
                   @include data-title;
                 }
               }
+              .rank-wrapper {
+                h2 {
+                  @include data-title;
+                }
+              }
             }
           }
         }

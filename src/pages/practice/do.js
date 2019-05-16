@@ -22,10 +22,11 @@ class Do extends PureComponent {
   }
 
   componentDidMount() {
-    const { type, num, user, getProblems } = this.props;
+    const { type, num, user, getProblems, grade } = this.props;
     getProblems(type, {
       total: num,
-      userId: user.get('id')
+      userId: user.get('id'),
+      grade
     });
   }
 }
@@ -33,6 +34,7 @@ class Do extends PureComponent {
 const mapState = state => ({
   type: state.getIn(['practice', 'type']),
   num: state.getIn(['practice', 'num']),
+  grade: state.getIn(['practice', 'grade']),
   user: state.getIn(['user', 'user'])
 });
 

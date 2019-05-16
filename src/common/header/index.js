@@ -80,7 +80,7 @@ class Header extends Component {
               <Link to="/">首页</Link>
             </ContainerItem>
             <ContainerItem className={activeBtn === 'forum' ? "left active" : "left"}>
-              <Link to="/forum">论坛</Link>
+              <Link to="/forum">社区</Link>
             </ContainerItem>
             <ContainerItem className="right btn">
               <Link to="/write">
@@ -91,10 +91,10 @@ class Header extends Component {
               {login ? (
                 <UserMenu />
               ) : (
-                <Link to="/login">
-                  <ZyBtn bgColor="#1890FF">登陆</ZyBtn>
-                </Link>
-              )}
+                  <Link to="/login">
+                    <ZyBtn bgColor="#1890FF">登陆</ZyBtn>
+                  </Link>
+                )}
             </ContainerItem>
             <ContainerItem className="right">
               {login ? null : <Link to="/register">注册</Link>}
@@ -115,6 +115,13 @@ class Header extends Component {
               </i>
               {this.getListArea(focused)}
             </SearchWrapper>
+            <ContainerItem className="right">
+              {this.props.auth === 2 ? (
+                <Link to="/admin">
+                  管理中心
+                </Link>
+              ) : null}
+            </ContainerItem>
           </Container>
         </Nav>
       </HeaderWrapper>
@@ -133,7 +140,8 @@ const mapStateToProps = state => ({
   focused: state.getIn(["header", "focused"]),
   list: state.getIn(["header", "list"]),
   mouseIn: state.getIn(["header", "mouseIn"]),
-  login: state.getIn(["login", "login"])
+  login: state.getIn(["login", "login"]),
+  auth: state.getIn(["user", "user", "auth"])
 });
 
 const mapDispatchToProps = dispatch => ({

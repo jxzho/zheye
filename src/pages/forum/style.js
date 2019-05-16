@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const commonStyled = styled.div`
   background: #fff;
-  padding: 15px 0;
+  padding: 15px;
   margin-bottom: 5px;
 `;
 

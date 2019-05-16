@@ -7,7 +7,7 @@ import api from '../../../api';
 
 const controls = ["undo", "redo", "separator", "text-color", "emoji", "code", "clear"];
 
-class Detail extends PureComponent {
+class Comment extends PureComponent {
   state = {
     editorState: BraftEditor.createEditorState(null),
   }
@@ -16,16 +16,15 @@ class Detail extends PureComponent {
 
   addComment = () => {
     const { editorState } = this.state;
-    const { detail, getDetail, info } = this.props;
-    api.addArticleComment({
+    const { info, problemId } = this.props;
+    api.addProblemComment({
       userId: info.get("id"),
-      articleId: detail.id,
+      problemId: problemId,
       content: editorState.toHTML()
     }).then(res => {
       const data = res.data;
       if (data.result) {
         message.success("添加评论成功！");
-        getDetail(detail.id);
       } else {
         message.error("添加评论失败！");
       }
@@ -37,7 +36,6 @@ class Detail extends PureComponent {
     const { editorState } = this.state;
     return (
       <div className="add-comment-wrapper">
-        <Avatar src={info.get("avatar")} />
         <div className="action">
           <BraftEditor
             value={editorState}
@@ -63,4 +61,4 @@ const mapDispatch = dispatch => ({
 export default connect(
   mapState,
   mapDispatch
-)(Detail);
+)(Comment);

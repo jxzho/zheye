@@ -1,5 +1,6 @@
 import React, { PureComponent } from "react";
 import { connect } from "react-redux";
+import { withRouter, Link } from "react-router-dom";
 import { Tag } from "antd";
 import { TopicWrapper, TopicItem } from "../style";
 
@@ -11,13 +12,15 @@ class Topic extends PureComponent {
         <Tag color="#108ee9">学习文档区</Tag>
         <div className="topic-list">
           {list.map(item => (
-            <TopicItem key={item.get('title')}>
-              <img
-                className="topic-pic"
-                src={item.get('imgUrl')} alt=""
-              />
-              {item.get('title')}
-            </TopicItem>
+            <Link to={`/DOC-${item.get('title')}`}>
+              <TopicItem key={item.get('title')}>
+                <img
+                  className="topic-pic"
+                  src={item.get('imgUrl')} alt=""
+                />
+                {item.get('title')}
+              </TopicItem>
+            </Link>
           ))}
         </div>
       </TopicWrapper>

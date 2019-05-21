@@ -19,7 +19,7 @@ const extendControls = [
     text: "发布"
   }
 ];
-const controls = ["undo", "redo", "emoji", "media", "clear"];
+const controls = ["undo", "redo", "emoji", "clear"];
 
 class Main extends PureComponent {
   state = {

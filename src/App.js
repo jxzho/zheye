@@ -16,7 +16,9 @@ import User from "./common/user";
 import Forum from "./pages/forum";
 import Admin from "./pages/admin"
 import LearnRoute from "./pages/learn/LearnRoute";
-import HTMLDoc from './pages/learn/components/HTMLDoc'
+import HTMLDoc from './pages/learn/components/doc/HTMLDoc';
+import CodePan from './pages/codePan';
+import DocDetail from './pages/learn/components/detail';
 
 class App extends Component {
   render() {
@@ -35,7 +37,9 @@ class App extends Component {
               <Route path="/user" component={User} />
               <Route path="/forum" component={Forum} />
               <Route path="/learn-route" exact component={LearnRoute} />
-              <Route path="/htmldoc" exact component={HTMLDoc} />
+              <Route path="/DOC-HTML" exact component={HTMLDoc} />
+              <Route path="/code-pan" exact component={CodePan} />
+              <Route path="/doc/detail/:id" exact component={DocDetail} />
             </Fragment>
           </BrowserRouter>
           <ZModal />

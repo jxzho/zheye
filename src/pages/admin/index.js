@@ -3,9 +3,12 @@ import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import "./style.scss";
 import { Menu, Icon, Layout } from 'antd';
+import UserList from "../admin/components/Users";
+import ArticleList from "../admin/components/Articles";
 import UploadProblem from "../practice/upload";
+import UploadDoc from "../learn/components/upload";
+import DocEdit from "../learn/components/edit";
 import { Redirect } from "react-router-dom";
-import Header from './components/Header';
 const SubMenu = Menu.SubMenu;
 const { Sider, Content } = Layout;
 
@@ -31,20 +34,28 @@ class Admin extends PureComponent {
   renderContent = () => {
     const { activeContent } = this.state;
     switch (activeContent) {
+      case "user-list":
+        return <UserList />
+      case "art-list":
+        return <ArticleList />
       case "problem-upload":
         return <UploadProblem />
+      case "problem-edit":
+        return "123"
+      case "doc-upload":
+        return <UploadDoc />
+      case "doc-edit":
+        return <DocEdit />
       default:
-        return <div></div>;
+        return null;
     }
   };
 
   render() {
     const { auth } = this.props;
-    console.log(auth);
     if (auth === 2) {
       return (
         <div className="admin-main-con">
-          <Header />
           <Layout>
             <Sider style={{ width: "256px" }}>
               <Menu
@@ -53,6 +64,9 @@ class Admin extends PureComponent {
                 onOpenChange={this.onOpenChange}
                 style={{ width: 256 }}
                 theme="dark"
+                onClick={({ key }) => {
+                  this.setState({ activeContent: key })
+                }}
               >
                 <SubMenu
                   key="user"
@@ -63,7 +77,7 @@ class Admin extends PureComponent {
                     </span>
                   }
                 >
-                  <Menu.Item key="1">Option 1</Menu.Item>
+                  <Menu.Item key="user-list">列表</Menu.Item>
                 </SubMenu>
                 <SubMenu
                   key="article"
@@ -74,7 +88,7 @@ class Admin extends PureComponent {
                     </span>
                   }
                 >
-                  <Menu.Item key="5">Option 5</Menu.Item>
+                  <Menu.Item key="art-list">列表</Menu.Item>
                 </SubMenu>
                 <SubMenu
                   key="problem"
@@ -85,21 +99,23 @@ class Admin extends PureComponent {
                     </span>
                   }
                 >
-                  <Menu.Item key="9" onClick={() => this.setState({ activeContent: "problem-upload" })}>上传</Menu.Item>
+                  <Menu.Item key="problem-upload">上传</Menu.Item>
+                  <Menu.Item key="problem-edit">编辑</Menu.Item>
                 </SubMenu>
                 <SubMenu
                   key="knowledge"
                   title={
                     <span>
                       <Icon type="setting" />
-                      <span>知识管理</span>
+                      <span>文档管理</span>
                     </span>
                   }
                 >
-                  <Menu.Item key="10">Option 10</Menu.Item>
+                  <Menu.Item key="doc-upload">上传</Menu.Item>
+                  <Menu.Item key="doc-edit">编辑</Menu.Item>
                 </SubMenu>
                 <SubMenu
-                  key="knowledge"
+                  key="homePage"
                   title={
                     <span>
                       <Icon type="setting" />
@@ -107,7 +123,7 @@ class Admin extends PureComponent {
                     </span>
                   }
                 >
-                  <Menu.Item key="10">Option 10</Menu.Item>
+                  <Menu.Item key="10">轮播图</Menu.Item>
                 </SubMenu>
               </Menu>
             </Sider>

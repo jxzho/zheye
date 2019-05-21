@@ -23,13 +23,13 @@ class Recommend extends PureComponent {
     return (
       <RecommendWrapper>
         <Link to="/learn-route">
-          <RecommendItem bgColor="#F8855B">
+          <RecommendItem bgColor="#6c126c">
             <Icon type="swap-right" theme="filled" />
             学习路线
             <Icon type="caret-right" theme="filled" className="right" />
           </RecommendItem>
         </Link>
-        <RecommendItem bgColor="#FFB84F" onClick={this.goPractice}>
+        <RecommendItem bgColor="#6ce26c" onClick={this.goPractice}>
           <Icon type="edit" theme="filled" />
           去做题
           <Icon type="caret-right" theme="filled" className="right" />
@@ -41,15 +41,24 @@ class Recommend extends PureComponent {
             <Icon type="caret-right" theme="filled" className="right" />
           </RecommendItem>
         </Link>
-        <RecommendItem bgColor="#C1E4DE">
-          <Icon type="eye" theme="filled" />
-          社区帖子
-          <Icon type="caret-right" theme="filled" className="right" />
-        </RecommendItem>
+        <Link to="/forum">
+          <RecommendItem bgColor="#C1E4DE">
+            <Icon type="eye" theme="filled" />
+            社区中心
+            <Icon type="caret-right" theme="filled" className="right" />
+          </RecommendItem>
+        </Link>
         <Link to="/user/info">
           <RecommendItem bgColor="#B7D6EC">
             <Icon type="skin" theme="filled" />
-            个人信息
+            个人中心
+            <Icon type="caret-right" theme="filled" className="right" />
+          </RecommendItem>
+        </Link>
+        <Link to="/code-pan">
+          <RecommendItem bgColor="#1890ff">
+            <Icon type="skin" theme="filled" />
+            在线编程
             <Icon type="caret-right" theme="filled" className="right" />
           </RecommendItem>
         </Link>

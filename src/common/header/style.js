@@ -14,6 +14,14 @@ export const HeaderWrapper = styled.nav`
   border-bottom: 1px solid #f0f0f0;
   background: #fff;
   box-shadow: 0 5px 10px rgba(0, 0, 0, .03);
+  .ant-select-show-search {
+    margin-top: 11px;
+    margin-left: 20px;
+    .ant-input {
+      border-radius: 16px;
+      background: #f0f0f0;
+    }
+  }
 `;
 
 export const Nav = styled.div`

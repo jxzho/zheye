@@ -16,7 +16,7 @@ class ZModal extends Component {
   closeModal = () => {
     const { changeModal } = this.props;
     changeModal({ visible: false });
-  }
+  };
 
   render() {
     const { modal } = this.props;
@@ -27,6 +27,7 @@ class ZModal extends Component {
         onOk={this.onOk}
         onCancel={this.onCancel}
         closable={false}
+        centered
       >
         {modal.get('content')}
       </Modal>

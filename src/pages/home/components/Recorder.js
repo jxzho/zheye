@@ -33,7 +33,7 @@ class Recorder extends Component {
 
 export const mapState = state => ({
   userId: state.getIn(["user", "user", "id"]),
-  record: state.getIn(["user", "info", "record"])
+  record: state.getIn(["user", "record"])
 });
 
 export const mapReducer = dispatch => ({

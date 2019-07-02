@@ -17,41 +17,44 @@ class CollectArticle extends Component {
         {article.size === 0 ? (
           <Empty description="暂无文章收藏" />
         ) : (
-          <ul className="list">
-            <h2 className="title">收藏{article.size}个文章</h2>
-            {article.map(item => (
-              <li className="item" key={item.get("id")}>
-                <div className="header">
-                  <Avatar
-                    src={item.getIn(["article", "userInfo", "avatar"])}
-                    size={20}
-                  />
-                  <Link to={`/detail/${item.getIn(["article", "id"])}`}>
-                    <span className="title">
-                      {item.getIn(["article", "title"])}
+            <ul className="list">
+              <h2 className="title">收藏{article.size}个文章</h2>
+              {article.map(item => {
+                const avatarUrl = item.getIn(["article", "userInfo", "avatar"]);
+                return (
+                  <li className="item" key={item.get("id")}>
+                    <div className="header">
+                      <Avatar
+                        src={avatarUrl ? avatarUrl : "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"}
+                        size={20}
+                      />
+                      <Link to={`/detail/${item.getIn(["article", "id"])}`}>
+                        <span className="title">
+                          {item.getIn(["article", "title"])}
+                        </span>
+                      </Link>
+                    </div>
+                    <p className="content">
+                      {`${stripHTML(item.getIn(["article", "content"])).substr(
+                        0,
+                        150
+                      )}}...`}
+                    </p>
+                    <span className="date">
+                      收藏于 {this.dateFormat(item.get("createAt"))}
                     </span>
-                  </Link>
-                </div>
-                <p className="content">
-                  {`${stripHTML(item.getIn(["article", "content"])).substr(
-                    0,
-                    150
-                  )}}...`}
-                </p>
-                <span className="date">
-                  收藏于 {this.dateFormat(item.get("createAt"))}
-                </span>
-                <ZLink
-                  source={{
-                    collect: item.getIn(["article", "collect"]),
-                    like: item.getIn(["article", "like"]),
-                    comment: 12
-                  }}
-                />
-              </li>
-            ))}
-          </ul>
-        )}
+                    <ZLink
+                      source={{
+                        collect: item.getIn(["article", "collect"]),
+                        like: item.getIn(["article", "like"]),
+                        comment: 12
+                      }}
+                    />
+                  </li>
+                )
+              })}
+            </ul>
+          )}
       </div>
     );
   }

@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Form, Input, Button, message } from "antd";
+import { Form, Input, Button, message  } from "antd";
 import { actionCreators as userAction } from "../store";
 import api from "../../../api";
 import SetAvatar from './setAvatar';
+import ZTag from "./Tags";
 const { TextArea } = Input;
 
 class Base extends Component {
@@ -27,7 +28,7 @@ class Base extends Component {
   };
 
   render() {
-    const { email, nickname, brief, tel } = this.state;
+    const { email, nickname, brief, tel, tag } = this.state;
     return (
       <div className="base">
         <div className="left">
@@ -43,6 +44,9 @@ class Base extends Component {
             </Form.Item>
             <Form.Item label="Tel">
               <Input value={tel} name="tel" />
+            </Form.Item>
+            <Form.Item label="标签">
+              <ZTag />
             </Form.Item>
             <Form.Item>
               <Button type="primary" onClick={this.infoSubmit}>

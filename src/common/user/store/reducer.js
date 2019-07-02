@@ -9,10 +9,8 @@ const user = local("user") ? local("user") : {
 };
 
 const defaultState = fromJS({
-  user,
-  info: {
-    record: false
-  },
+  user: user,
+  record: false,
   article: {
     page: 1,
     pageSize: 3,
@@ -34,7 +32,7 @@ const changeUser = (state, action) => {
 
 const changeInfo = (state, action) => {
   const data = action.data;
-  return state.set("info", fromJS(data));
+  return state.setIn(["user", "info"], fromJS(data));
 };
 
 const changeArticles = (state, action) => {
@@ -67,9 +65,9 @@ const reducer = (state = defaultState, action) => {
     case constants.CHANGE_DATA_CENTER:
       return state.set("dataCenter", action.data);
     case constants.CHANGE_RECORD:
-      return state.setIn(["info", "record"], true);
+      return state.set("record", true);
     case constants.CLEAR_USER:
-      return state.set("user", {});
+      return state.set("user", fromJS({ info: { avatar: "" } }));
     default:
       return state;
   }

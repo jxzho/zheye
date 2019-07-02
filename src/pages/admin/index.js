@@ -5,6 +5,9 @@ import "./style.scss";
 import { Menu, Icon, Layout } from 'antd';
 import UserList from "../admin/components/Users";
 import ArticleList from "../admin/components/Articles";
+import ProblemList from "./components/Problems";
+import SlideList from "./components/Slide";
+import TopicList from "./components/Topic";
 import UploadProblem from "../practice/upload";
 import UploadDoc from "../learn/components/upload";
 import DocEdit from "../learn/components/edit";
@@ -41,11 +44,15 @@ class Admin extends PureComponent {
       case "problem-upload":
         return <UploadProblem />
       case "problem-edit":
-        return "123"
+        return <ProblemList />
       case "doc-upload":
         return <UploadDoc />
       case "doc-edit":
         return <DocEdit />
+      case "slide-list":
+        return <SlideList />
+      case "topic-list":
+        return <TopicList />
       default:
         return null;
     }
@@ -123,7 +130,8 @@ class Admin extends PureComponent {
                     </span>
                   }
                 >
-                  <Menu.Item key="10">轮播图</Menu.Item>
+                  <Menu.Item key="slide-list">轮播图</Menu.Item>
+                  <Menu.Item key="topic-list">文档标签</Menu.Item>
                 </SubMenu>
               </Menu>
             </Sider>

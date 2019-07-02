@@ -9,11 +9,11 @@ class PassRate extends Component {
         <div className="pass-rate-area">
           <div className="item">
             <span className="label">JAVASCRIPT</span>
-            <Progress type="circle" percent={12} width={80} />
+            <Progress type="circle" percent={0} width={80} />
           </div>
           <div className="item">
             <span className="label">CSS</span>
-            <Progress type="circle" percent={60} width={80} />
+            <Progress type="circle" percent={0} width={80} />
           </div>
           <div className="item">
             <span className="label">HTML</span>

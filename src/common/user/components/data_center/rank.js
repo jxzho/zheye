@@ -12,17 +12,18 @@ import DataSet from "@antv/data-set";
 // const data = [
 //   {
 //     user: "junxio",
-//     finished: 100
+//     count: 22
 //   },
 //   {
 //     user: "xixio~",
-//     finished: 20
+//     count: 18
 //   }
 // ];
 
 class Rank extends Component {
   render() {
     const data = this.props.data ? this.props.data : [];
+    // console.log(this.props.data);
     const ds = new DataSet();
     const dv = ds.createView().source(data);
     dv.source(data).transform({
@@ -30,7 +31,7 @@ class Rank extends Component {
 
       callback(a, b) {
         // 排序依据，和原生js的排序callback一致
-        return a.finished - b.finished > 0;
+        return a.count - b.count > 0;
       }
     });
     return (
@@ -45,9 +46,9 @@ class Rank extends Component {
                 offset: 12
               }}
             />
-            <Axis name="finished" />
+            <Axis name="count" />
             <Tooltip />
-            <Geom type="interval" position="user*finished" />
+            <Geom type="interval" position="user*count" />
           </Chart>
         </div>
       </div>

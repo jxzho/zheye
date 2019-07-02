@@ -69,11 +69,11 @@ class ArticleList extends Component {
         <div className="btn-action-area">
           <Button type="danger" size="small" onClick={() => {
             if (status === 1) {
-              api.updateArticle(id, { status: 0 }).then(res => {
+              api.updateArticles(id, { status: 0 }).then(res => {
                 this.initData();
               });
             } else {
-              api.updateArticle(id, { status: 1 }).then(res => {
+              api.updateArticles(id, { status: 1 }).then(res => {
                 this.initData();
               });
             }

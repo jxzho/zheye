@@ -25,7 +25,7 @@ class DocDetail extends Component {
   handleUpload = () => {
     const { type, title, content, id } = this.state;
     const data = {
-      type,
+      documentId: type,
       title,
       content
     };

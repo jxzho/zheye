@@ -8,14 +8,16 @@ const defaultState = fromJS({
   article: {
     page: 1,
     pageSize: 5
-  }
+  },
+  isListLoading: true
 });
 
 const changeHomeData = (state, action) => {
   return state.merge({
     slideList: fromJS(action.slideList),
     topicList: fromJS(action.topicList),
-    articleList: fromJS(action.articleList)
+    articleList: fromJS(action.articleList),
+    isListLoading: action.isListLoading
   });
 };
 

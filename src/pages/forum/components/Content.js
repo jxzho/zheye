@@ -2,7 +2,7 @@ import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { ContentItem } from "../style";
-import { Pagination } from "antd";
+import { Pagination, Avatar, Skeleton } from "antd";
 import { actionCreators as actions } from "../store";
 import moment from "moment";
 
@@ -17,28 +17,36 @@ class Content extends PureComponent {
   };
 
   render() {
-    const { total, data } = this.props;
+    const { total, data, isLoading } = this.props;
     const { defaultCurrent, defaultPageSize } = this.state;
     return (
       <div className="content-wrapper">
-        {data.map(item => (
-          <Link to={`/detail/${item.id}`}>
-            <ContentItem key={item.id}>
-              <div className="item-info">
-                <div className="main-info">
-                  <h3>{item.title}</h3>
+        {isLoading
+          ? (
+            <div>
+              <Skeleton paragraph={false} active/>
+              <Skeleton avatar title={false} active/>
+            </div>
+          )
+          : data.map(item => (
+            <Link to={`/detail/${item.id}`} key={item.id}>
+              <ContentItem key={item.id}>
+                <div className="item-info">
+                  <div className="main-info">
+                    <h3>{item.title}</h3>
+                  </div>
+                  <div className="less-info">
+                    <p className="source">
+                      <Avatar src={item.user.avatar} />
+                      <span>{item.user.nickname}</span>
+                      <span>{moment(item.updateAt).format("YYYY-MM-DD")}</span>
+                      <span>发布</span>
+                    </p>
+                  </div>
                 </div>
-                <div className="less-info">
-                  <p className="source">
-                    <span>{item.user.nickname}</span>
-                    <span>{moment(item.updateAt).format("YYYY-MM-DD")}</span>
-                    <span>发布</span>
-                  </p>
-                </div>
-              </div>
-            </ContentItem>
-          </Link>
-        ))}
+              </ContentItem>
+            </Link>
+          ))}
         <Pagination
           defaultCurrent={defaultCurrent}
           defaultPageSize={defaultPageSize}
@@ -62,7 +70,8 @@ class Content extends PureComponent {
 const mapState = state => ({
   total: state.getIn(["forum", "total"]),
   data: state.getIn(["forum", "data"]),
-  contentType: state.getIn(["forum", "type"])
+  contentType: state.getIn(["forum", "type"]),
+  isLoading: state.getIn(["forum", "isLoading"]),
 });
 
 const mapDispatch = dispatch => ({

@@ -27,7 +27,6 @@ export const HomeLeft = styled.div`
 
 export const TopicWrapper = styled.div`
   padding: 20px 0 10px 0;
-  overflow: hidden;
   .topic-list {
     margin-top: 10px;
   }
@@ -56,23 +55,17 @@ export const TopicItem = styled.div`
 
 export const ListItem = styled.div`
   margin: 20px 0 10px 0;
-  border-right: 10px solid #1890FF;
-  border-bottom-right-radius: 5px;
-  border-top-right-radius: 5px;
   height: 150px;
   position: relative;
-  &:hover {
-    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
-  }
 
   .show-content {
     display: flex;
     align-items: center;
-    .pic {
-      display: block;
-      width: 150px;
-      height: 100px;
-      border-radius: 2px;
+    .desc {
+      user-select: none;
+    }
+    .show-detail-item {
+      padding-right: 20px;
     }
   }
 

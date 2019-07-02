@@ -4,6 +4,8 @@ import { Menu } from 'antd';
 import "../../style.scss";
 import api from "../../../../api";
 import ReactMarkdown from "react-markdown";
+import config from "./config";
+const { cssDemo: demos } = config;
 const { SubMenu } = Menu;
 
 class HTMLDoc extends PureComponent {
@@ -25,9 +27,14 @@ class HTMLDoc extends PureComponent {
   handleClickMenuItem = ({ keyPath }) => {
     const child = keyPath[0];
     const { menu } = this.state;
-    const item = menu.children.find(item => {
+    let item = menu.children.find(item => {
       return item.title === child;
     });
+    if (!item) {
+      item = demos.find(item => {
+        return item.title === child;
+      });
+    }
     this.setState({ content: item.content });
   };
 
@@ -47,6 +54,14 @@ class HTMLDoc extends PureComponent {
             title={<span>{menu.title}</span>}
           >
             {menu.children.map((item, index) => (
+              <Menu.Item key={item.title}>{item.title}</Menu.Item>
+            ))}
+          </SubMenu>
+          <SubMenu
+            key="案例练习"
+            title="案例练习"
+          >
+            {demos.map((item, index) => (
               <Menu.Item key={item.title}>{item.title}</Menu.Item>
             ))}
           </SubMenu>

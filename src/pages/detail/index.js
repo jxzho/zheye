@@ -12,6 +12,7 @@ import "./style.scss";
 
 class Detail extends PureComponent {
   render() {
+    // this.props.getDetail(this.props.match.params.id);
     const { article, user = {}, comment = [] } = this.props;
     const { title, content = "", like, updateAt } = article;
     return (
@@ -36,7 +37,7 @@ class Detail extends PureComponent {
               </div>
             </div>
           </section>
-          <div className="content">
+          <div className="md-show-content">
             <ReactMarkdown source={content} escapeHtml={false} />
           </div>
           <ArticleAction />

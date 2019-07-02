@@ -25,9 +25,9 @@ export const mouseLeave = () =>({
 
 export const getList = () => {
   return dispatch => {
-    axios.get('/api/header/list.json').then(res => {
+    axios.get('/admin/articles').then(res => {
       const data = res.data;
-      dispatch(changeList(data.data));
+      dispatch(changeList([]));
     }).catch(err => {
       console.log(err);
     });

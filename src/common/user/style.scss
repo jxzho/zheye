@@ -69,6 +69,11 @@
           }
         }
       }
+      .tag-wrapper {
+        .ant-tag {
+          margin-bottom: 10px;
+        }
+      }
     }
     .right-area {
       width: 800px;
@@ -94,31 +99,36 @@
             .list {
               margin-bottom: 0;
               & > .item:not(:nth-last-child(1)) {
-                border-bottom: 1px solid #e8e8e8;
                 margin-bottom: 30px;
               }
               .item {
-                padding: 16px 0;
-                .title {
-                  line-height: 16px;
-                  margin-bottom: 0.8em;
-                  color: inherit;
-                  &:hover {
-                    color: #1890ff;
+                padding: 16px 0 0 16px;
+                .header {
+                  display: flex;
+                  align-items: center;
+                  margin-bottom: 1em;
+                  .title {
+                    margin-left: 10px;
+                    margin-bottom: 0;
+                    color: inherit;
+                    font-size: 15px;
+                    font-weight: bold;
+                    &:hover {
+                      color: #1890ff;
+                    }
                   }
                 }
-                .label {
-                  margin-bottom: 1em;
-                }
                 .content {
+                  margin-top: .1em;
                   margin-bottom: 1em;
                 }
                 .info {
                   display: flex;
                   align-items: center;
-                  margin-bottom: 1em;
-                  .name {
-                    margin-right: 8px;
+                  margin-bottom: .5em;
+                  .prefix {
+                    color: #979595;
+                    font-size: 13px;
                   }
                   .date {
                     color: #979595;
@@ -305,6 +315,11 @@
         padding: 20px 0 0 0;
         .left {
           width: 300px;
+          .tag-wrapper {
+            .ant-tag {
+              margin-bottom: 10px;
+            }
+          }
         }
         .right {
           flex: 1;
@@ -334,7 +349,7 @@
                 height: 100%;
                 background: transparent;
                 border: none;
-                color: #fff;
+                color: rgb(247, 102, 49);
                 font-weight: bold;
                 padding: 0;
                 &:hover {
@@ -363,6 +378,12 @@
       img {
         width: 100%;
         border-radius: 100%;
+      }
+    }
+
+    .sercurity-area {
+      input {
+        margin: 10px;
       }
     }
   }

@@ -7,9 +7,20 @@ import "braft-editor/dist/index.css";
 import "./style.scss";
 import api from "../../api";
 import ReactMarkdown from "react-markdown";
+import { actionCreators as ModalAction } from "../../common/modal/store";
+import UploadImage from "../../common/upload/uploadImage";
 const Option = Select.Option;
+// anticon anticon-picture
 
 const extendControls = [
+  {
+    key: "insert-picture",
+    type: "button",
+    title: "插入图片",
+    className: "insert-picture",
+    html: null,
+    text: "插入图片"
+  },
   {
     key: "article-submit",
     type: "button",
@@ -45,7 +56,9 @@ class Main extends PureComponent {
   };
 
   submitClick = () => {
-    this.setState({ visible: true });
+    this.setState({ 
+      visible: true
+    });
   };
 
   handleOk = content => {
@@ -69,6 +82,32 @@ class Main extends PureComponent {
         history.push(`/detail/${articleId}`);
       } else {
         message.error(data.msg);
+      }
+    });
+  };
+
+  handleUploadFinished = (imgUrl) => {
+    const { editorState } = this.state;
+    this.setState({
+      editorState: BraftEditor.createEditorState(
+        editorState.toHTML() + 
+        `![](${imgUrl})`
+      )
+    });
+  };
+
+  changeModal = () => {
+    const { changeModal } = this.props;
+    changeModal({
+      visible: true,
+      title: "插入图片",
+      content: (
+        <div className="insert-modal-area">
+          <UploadImage uploadFinished={this.handleUploadFinished} />
+        </div>
+      ),
+      onOk: () => {
+        console.log("OK");
       }
     });
   };
@@ -128,7 +167,7 @@ class Main extends PureComponent {
                 <Option value="css">css</Option>
                 <Option value="html">html</Option>
                 <Option value="react">react</Option>
-                <Option value="vue">yiminghe</Option>
+                <Option value="vue">vue</Option>
               </Select>
             </Form.Item>
           </Form>
@@ -137,8 +176,9 @@ class Main extends PureComponent {
     );
   }
 
-  componentDidMount() {
-    extendControls[0].onClick = this.submitClick;
+  componentWillMount() {
+    extendControls[0].onClick = this.changeModal;
+    extendControls[1].onClick = this.submitClick;
   }
 }
 
@@ -147,7 +187,9 @@ const mapState = state => ({
   mode: state.getIn(["write", "mode"])
 });
 
-const mapDispatch = dispatch => ({});
+const mapDispatch = dispatch => ({
+  changeModal: data => dispatch(ModalAction.changeModal(data))
+});
 
 export default connect(
   mapState,

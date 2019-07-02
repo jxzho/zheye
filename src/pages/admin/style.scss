@@ -40,6 +40,7 @@
           flex: 1;
           padding-right: 10px;
           border-right: 1px dashed #aaa;
+          min-width: 460px;
         }
         .doc-edit-show {
           flex: 1;
@@ -55,6 +56,12 @@
       .doc-edit-panel {
         .doc-type-select {
           margin-bottom: 20px;
+        }
+      }
+
+      .slides-edit-panel {
+        img {
+          width: 120px;
         }
       }
     }

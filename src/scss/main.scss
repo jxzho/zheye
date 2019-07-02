@@ -18,7 +18,7 @@
     width: 100%;
     height: 100%;
   }
-  .md-show-content {
+  .md-show-content, .text-show-area {
     img {
       max-width: 100%;
     }
@@ -260,5 +260,9 @@
     table th:first-child {
       border-left: none;
     }
+  }
+
+  .problem-edit-wrapper {
+    padding: 50px;
   }
 }

@@ -6,6 +6,7 @@ import api from '../../../api';
 import Comment from './comment';
 
 const ans = ["A", "B", "C", "D"];
+const defaultAvatar = "https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png";
 
 class Analysis extends PureComponent {
   state = {
@@ -116,7 +117,7 @@ class Analysis extends PureComponent {
           {commentList.map(item => (
             <li className="comment-item" key={item.id}>
               <div className="user">
-                <Avatar src={item.user.avatar} />
+                <Avatar src={item.user.avatar ? item.user.avatar : defaultAvatar} />
                 <span className="name">{item.user.userNickname}</span>
               </div>
               <p className="content" dangerouslySetInnerHTML={{ __html: item.content }} />

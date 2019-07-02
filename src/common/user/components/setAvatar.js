@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Upload, message, Avatar, Icon } from "antd";
 import { actionCreators as userAction } from '../store';
 
+const defaultAvatar = "https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png";
 const getBase64 = (img, callback) => {
   const reader = new FileReader();
   reader.addEventListener("load", () => callback(reader.result));
@@ -49,11 +50,13 @@ class SetAvatar extends Component {
       ...info.toJS(),
       avatar: ret.data.imgUrl
     });
+    this.setState({ loading: false });
   };
 
   render() {
     const { info, user } = this.props;
     const { imageUrl, loading } = this.state;
+    const avatar = info.get('avatar');
     const uploadButton = (
       <div>
         <Icon type={loading ? "loading" : "plus"} />
@@ -63,7 +66,7 @@ class SetAvatar extends Component {
     return (
       <div className="avatar-wrapper">
         <Avatar
-          src={info.get('avatar')}
+          src={avatar ? avatar : defaultAvatar}
           size={200}
         />
         <Upload
@@ -84,7 +87,7 @@ class SetAvatar extends Component {
 }
 
 const mapState = state => ({
-  info: state.getIn(['user', 'info']),
+  info: state.getIn(['user', "user", 'info']),
   user: state.getIn(['user', 'user'])
 });
 

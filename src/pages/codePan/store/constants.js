@@ -1,0 +1,7 @@
+export const CHANGE_CSS_CODE = 'CHANGE_CSS_CODE';
+export const CHANGE_HTML_CODE = 'CHANGE_HTML_CODE';
+export const CHANGE_JS_CODE = 'CHANGE_JS_CODE';
+export const CHANGE_ACTIVE_LAN = 'CHANGE_ACTIVE_LAN';
+export const CHANGE_WIDTH = 'CHANGE_WIDTH';
+
+export const GET_IFRAME = 'GET_IFRAME';

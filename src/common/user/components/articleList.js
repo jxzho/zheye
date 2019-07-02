@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Tag, Avatar, Pagination } from "antd";
+import { Tag, Avatar, Pagination, Empty } from "antd";
 import { actionCreators as userAction } from "../store";
 import { stripHTML } from "../../../utils";
 import * as moment from "moment";
@@ -17,36 +17,35 @@ class ArticleList extends Component {
     const { list, info, page, pageSize, total } = this.props;
     return (
       <div className="article-wrapper">
-        <ul className="list">
-          <h2 className="title">共{list.size}个文章</h2>
-          {list.map(item => {
-            const id = item.get("id");
-            const content = stripHTML(item.get("content"));
-            const createAt = item.get("createAt");
-            return (
-              <li className="item" key={id}>
-                <Link to={`/detail/${id}`}>
-                  <h2 className="title">标题：{item.get("title")}</h2>
-                </Link>
-                <div className="label">
-                  <Tag>Ant Design</Tag>
-                  <Tag>设计语言</Tag>
-                  <Tag>蚂蚁金服</Tag>
-                </div>
-                <p className="content">{content.slice(0, 200) + "..."}</p>
-                <div className="info">
-                  <Avatar src={info.get("avatar")} />
-                  <span className="name">junxio</span>
-                  发布于
-                  <span className="date">
-                    {moment(createAt).format("YYYY-MM-DD HH:mm")}
-                  </span>
-                </div>
-                <ZLink source={{ collect: 69, like: 89, comment: 166 }} />
-              </li>
-            );
-          })}
-        </ul>
+        {list.size > 0
+          ? (
+            <ul className="list">
+              <h2 className="title">发表{list.size}个文章</h2>
+              {list.map((item, index) => {
+                const id = item.get("id");
+                const content = stripHTML(item.get("content"));
+                const createAt = item.get("createAt");
+                return (
+                  <li className="item" key={id}>
+                    <Link to={`/detail/${id}`}>
+                      <div className="header">
+                        <Avatar src={info.get("avatar")} size={20} />
+                        <h2 className="title">{item.get("title")}</h2>
+                      </div>
+                    </Link>
+                    <p className="content">{content.slice(0, 200) + "..."}</p>
+                    <div className="info">
+                      <span className="prefix">发布于</span>
+                      <span className="date">
+                        {moment(createAt).format("YYYY-MM-DD HH:mm")}
+                      </span>
+                    </div>
+                    <ZLink source={{ collect: index, like: index, comment: index }} />
+                  </li>
+                );
+              })}
+            </ul>
+          ) : <Empty description="去发表一个文章吧~" />}
         <Pagination
           simple
           defaultCurrent={page}
@@ -67,7 +66,7 @@ class ArticleList extends Component {
 
 const mapState = state => ({
   user: state.getIn(["user", "user"]),
-  info: state.getIn(["user", "info"]),
+  info: state.getIn(["user", "user", "info"]),
   page: state.getIn(["user", "article", "page"]),
   pageSize: state.getIn(["user", "article", "pageSize"]),
   total: state.getIn(["user", "article", "total"]),

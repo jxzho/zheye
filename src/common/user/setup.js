@@ -1,6 +1,7 @@
 import React, { Component, } from 'react';
 import { Tabs } from 'antd';
 import Base from './components/setBase';
+import AccPwd from "./components/AccPwd";
 const TabPane = Tabs.TabPane;
 
 class SetUp extends Component {
@@ -27,6 +28,7 @@ class SetUp extends Component {
           </TabPane>
           <TabPane tab="安全设置" key="安全设置">
             <h2 className="title">{curTab}</h2>
+            <AccPwd />
           </TabPane>
         </Tabs>
       </div>

@@ -48,7 +48,7 @@ class Info extends Component {
     return (
       <p className="info-item">
         <Icon type={icon} />
-        {text}
+        {text ? text : "暂无"}
       </p>
     );
   };
@@ -67,6 +67,7 @@ class Info extends Component {
   render() {
     const { tabKey } = this.state;
     const { info } = this.props;
+    const avatarUrl = info.get("avatar");
     return (
       <div className="user-info-wrapper">
         <div
@@ -85,7 +86,12 @@ class Info extends Component {
           >
             <div className="top">
               <div className="avatar">
-                <Avatar src={info.get("avatar")} size={104} />
+                <Avatar
+                  src={avatarUrl
+                    ? avatarUrl
+                    : "https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png"}
+                  size={104}
+                />
               </div>
               <h2 className="name">{info.get("nickname")}</h2>
               <span className="brief">{info.get("brief")}</span>
@@ -97,16 +103,16 @@ class Info extends Component {
             </div>
             {this.InfoItem("mail", info.get("email"))}
             {this.InfoItem("mobile", info.get("tel"))}
-            {this.InfoItem("environment", "")}
-            <a href="http://localhost:3001" target="blank">
+            {/* {this.InfoItem("environment", "")} */}
+            {/* <a href="http://localhost:3001" target="blank">
               {this.InfoItem("paper-clip", "制作简历")}
-            </a>
+            </a> */}
             <Divider dashed={true} />
             <div className="title">标签</div>
-            <div>
-              <Tag>很有想法的</Tag>
-              <Tag>专注设计</Tag>
-              <Tag>海纳百川</Tag>
+            <div className="tag-wrapper">
+              {info.get("tag") ? JSON.parse(info.get("tag")).map(item => (
+                <Tag>{item}</Tag>
+              )) : "暂无"}
             </div>
             <Divider dashed={true} />
             <div className="title">院校</div>
@@ -146,7 +152,7 @@ class Info extends Component {
 
 const mapState = state => ({
   user: state.getIn(["user", "user"]),
-  info: state.getIn(["user", "info"])
+  info: state.getIn(["user", "user", "info"])
 });
 
 const mapDispatch = dispatch => ({

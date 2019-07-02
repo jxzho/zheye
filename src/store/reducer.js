@@ -8,6 +8,7 @@ import { reducer as practiceReducer } from '../pages/practice/store';
 import { reducer as modalReducer } from '../common/modal/store';
 import { reducer as writeReduer } from '../pages/write/store';
 import { reducer as forumReducer } from '../pages/forum/store';
+import { reducer as codePanReducer } from '../pages/codePan/store';
 
 const reducer = combineReducers({
   header: headerReducer,
@@ -18,7 +19,8 @@ const reducer = combineReducers({
   practice: practiceReducer,
   modal: modalReducer,
   write: writeReduer,
-  forum: forumReducer
+  forum: forumReducer,
+  codePan: codePanReducer
 });
 
 export default reducer;

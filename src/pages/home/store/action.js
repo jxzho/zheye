@@ -7,7 +7,8 @@ const getHomeData = res => {
     type: constants.CHANGE_HOME_DATA,
     slideList: data.slideList,
     topicList: data.topicList,
-    articleList: data.articleList
+    articleList: data.articleList,
+    isListLoading: false
   };
 };
 

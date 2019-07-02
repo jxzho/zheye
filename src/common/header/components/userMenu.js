@@ -50,7 +50,7 @@ class UserMenu extends Component {
 }
 
 const mapStateToProps = state => ({
-  info: state.getIn(["user", "info"]),
+  info: state.getIn(["user", "user", "info"]),
   auth: state.getIn(["user", "user", "auth"])
 });
 

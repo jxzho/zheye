@@ -21,6 +21,7 @@ import {
   SearchInfoItem,
   ZyBtn
 } from "./style";
+import ZSearch from './components/Search';
 
 class Header extends Component {
   state = {
@@ -41,13 +42,6 @@ class Header extends Component {
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
-          <SearchInfoTitle>
-            热门
-            <SearchInfoSwitch>
-              换一批
-              <Icon type="sync" rotate={20} style={{ marginLeft: "5px" }} />
-            </SearchInfoSwitch>
-          </SearchInfoTitle>
           <SearchInfoList>
             {list.map(item => (
               <SearchInfoItem key={item}>{item}</SearchInfoItem>
@@ -59,6 +53,11 @@ class Header extends Component {
       return null;
     }
   };
+
+  handleSearchChange = e => {
+    const value = e.target.value;
+    console.log(value)
+  }
 
   render() {
     const {
@@ -102,19 +101,21 @@ class Header extends Component {
             <ContainerItem className="right">
               <i className="iconfont">&#xe636;</i>
             </ContainerItem>
-            <SearchWrapper>
+            {/* <SearchWrapper>
               <CSSTransition in={focused} classNames="slide" timeout={550}>
                 <ContainerSearch
                   className={focused ? "focused" : ""}
                   onFocus={() => handleInputFocus(list)}
                   onBlur={handleInputBlur}
+                  onChange={this.handleSearchChange}
                 />
               </CSSTransition>
               <i className={focused ? "focused iconfont" : "iconfont"}>
                 &#xe637;
               </i>
               {this.getListArea(focused)}
-            </SearchWrapper>
+            </SearchWrapper> */}
+            <ZSearch />
             <ContainerItem className="right">
               {this.props.auth === 2 ? (
                 <Link to="/admin">

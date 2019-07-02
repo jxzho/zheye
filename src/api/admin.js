@@ -28,6 +28,30 @@ const getArticles = (id, data) => {
   return axios.get("/admin/articles",);
 }
 
+const updateArticles = (id, data) => {
+  return axios.put(`/admin/articles/${id}`, data);
+}
+
+const getAdminProblems = (id, data) => {
+  return axios.get("/admin/problems",);
+}
+
+const findProblem = (id, data) => {
+  return axios.get(`/admin/problems/${id}`, data);
+}
+
+const updateProblem = (id, data) => {
+  return axios.put(`/admin/problems/${id}`, data);
+}
+
+const getSlides = (id, data) => {
+  return axios.get(`/admin/slides`, data);
+}
+
+const getTopic = (id, data) => {
+  return axios.get(`/admin/topic`, data);
+}
+
 export default {
   getDocDetail,
   uploadDoc,
@@ -35,5 +59,11 @@ export default {
   getDocAll,
   getUsers,
   updateUser,
-  getArticles
+  getArticles,
+  updateArticles,
+  getAdminProblems,
+  findProblem,
+  updateProblem,
+  getSlides,
+  getTopic
 }

@@ -5,7 +5,7 @@
   "dependencies": {
     "@antv/data-set": "^0.10.2",
     "antd": "^3.15.0",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "bizcharts": "^3.5.2",
     "braft-editor": "^2.2.9",
     "immutable": "^4.0.0-rc.12",
